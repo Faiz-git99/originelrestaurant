@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Équipe</title>
+<link rel="stylesheet" href="css/accueil.css">
+</head>
+<body>
+    <h1>l'équipe Original's Faïz</h1>
+
+<div class="personne">
+        <h2>Mes chefs cuisiniers</h2>
+
+    <% objetEquipe.cuisine.forEach(c => { %>
+    <h6><%= c %></h6>
+    <% }) %>
+    
+    <h2>Mes chefs d'équipe</h2>
+
+    <% objetEquipe.chefequipe.forEach(d => { %>
+    <h6><%= d %></h6>
+    <% }) %>
+
+    <h2>mes serveuses</h2>
+    
+    <% objetEquipe.serveuse.forEach(s => { %>
+        <h6><%= s %></h6>
+        <% }) %>
+    
+</div>
+
+
+</body>
+</html>

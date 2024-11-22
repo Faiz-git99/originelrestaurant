@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+<link rel="stylesheet" href="css/accueil.css">
+</head>
+<body>
+
+    <header>
+        <h1>Le Original's Faïz</h1>
+
+        <nav class="recherche">
+            <ul>
+            <li><a href="acceuil.html">Accueil</a></li>
+            <li><a href="equipe.html" target="_blank">Équipe</a></li>
+            <li><a href="menu.html" target="_blank">Menu</a></li>
+            <li><a href="contact.html" target="_blank">Contact</a></li>
+            
+    </header>       
+<br>
+
+    <div class="image">
+        <img src="images/logo.png" alt="l'image d'un resturant chic" width=20%/>
+    </div>
+
+    <div class="situation">
+        <p>Le <b>restaurant Orignal's Faïz</b> est un fastfood qui propose différents menus.</p> 
+        <p>Venez nombreux et nombreuses pour vous régaler. Que ce soit entres familles ou entres amis, la régalade sera au rendez-vous !!!</p>
+        <p>Vous êtes les meilleurs !!!</p>
+    </div>
+        <% utilisateur.nom.forEach(n => { %> <!--récupère dans l'objet utilisateur chaque élément dans le nom. surtout fermer la balise-->
+    <h3><%= utilisateur.montemps + " " + n %></h3> <!--grâce a la balise % et le signe = qui permet de récupérer la valeur-->
+        <% }) %> <!--toujours ouvrir une balise % et fermer.-->
+</body>
+</html>

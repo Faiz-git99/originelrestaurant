@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="css/accueil.css">
+</head>
+<body>
+    <h1>Nos menus</h1>
+
+    <h2>Les menus du jour</h2>
+    <% NosMenus.plat.forEach(p => { %>
+    <p><%= p %></p>
+    <% }) %>
+
+    <h2>Les prix</h2>
+    <em>les prix sont affichés en ordre avec le menu du jour</em>
+
+    <% NosMenus.prix.forEach(pr => { %>
+    <p><%= pr %></p>
+    <% }) %>
+
+<div class="plat1">
+    <img src="téléchargement.jpg" alt="double steack">
+
+    <div class="plat2">
+        <img src="wrap.jpg" alt="un menu wrap">
+    </div>
+
+    <div class="plat3">
+        <img src="tacos.jpg" alt="un bon vieux tacos">
+    </div>
+
+    <div class="plat4">
+        <img src="quesadilla.jpg" alt="plat espagnol">
+        </div>
+
+   <!-- <h2>Hamburger double steack </h2>
+    <h3>Prix : simple 7€, en menu : 8€ </h3>
+
+<div class="plat1">
+    <img src="téléchargement.jpg" alt="double steack">
+</div>
+<br>
+<br>
+
+    <h2>Wrap</h2>
+    <h3>prix : simple 3,50€, en menu : 5€</h3>
+
+
+<div class="plat2">
+    <img src="wrap.jpg" alt="un menu wrap">
+</div>
+<br>
+<br>
+    <h2>Tacos</h2>
+    <h3>Prix : simple 7,50€, en menu : 9€</h3>
+
+<div class="plat3">
+    <img src="tacos.jpg" alt="un bon vieux tacos">
+</div>
+
+<br>
+<br>
+
+    <h2>Quesadillas</h2>
+    <h3>Prix : simple 7€, en menu : 8€</h3>
+
+<div class="plat4">
+<img src="quesadilla.jpg" alt="plat espagnol">
+</div>
+-->
+</body>
+</html>
