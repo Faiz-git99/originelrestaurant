@@ -6,6 +6,18 @@ const fs = require('fs');
 
 const app = express();
 
+const mysql = require('mysql');
+
+const myConnection = require("express-myconnection");
+
+const connection = {
+    host : "localhost",
+    user : "root",
+    password : "ch14fz03",
+    port : 3306,
+    database : "restaurant"
+};
+
 // l'endroit où se situe les vues qui s'affichent sur le naviagteur
 app.set("views", "./views");
 
@@ -14,6 +26,8 @@ app.set("view engine", "ejs");
 
 // précise le répertoire 'public' qui contient le fichier statics
 app.use(express.static("public"));
+
+//app.use(myConnection(connection, "pool"));
 
 // insérer un route GET
 app.get("/", (req, res) => {
@@ -29,23 +43,10 @@ app.get("/accueil", (req, res) => {
     res.write(data);
     res.end(); */
 
-let time = "Bonjour";
-const date = new Date();
 
+    res.render("accueil"); 
 
-
-if(date.getHours() > 15) {
- time = "Bonjour";
-}
-
-    utilisateur = {
-        nom : ["GANGSTA", "boss", "chigné"], 
-        prenom : "Saka",
-        montemps : time
-    };
-    res.render("accueil", utilisateur);
-
-});
+    }); 
 
 
 
