@@ -9,30 +9,35 @@
 </head>
 
 <body>
-<h1> Formulaire de Contact</h1>
+    <%- include('partiel/navigation') %>
 
 <form>
-    <label>Nom :</label>
-    <input type="text" name="nom" id="nom" required>
-<br><br>
-    <label>Prénom :</label>
-    <input type="text" name="prenom" id="prenom" required>
-<br><br>
-    <label>Object de message :</label>
-    <textarea name="" id="object" cols="30" rows="5"></textarea>
-<br><br>
-<input type="submit" value="Envoyez" required>
-<br>
 
+    <div class="persocommande">
+        <h2> Formulaire de Contact</h2>
+        <label>Nom :</label>
+        <input type="text" name="nom" id="nom" required>
+<br><br>
+        <label>Prénom :</label>
+        <input type="text" name="prenom" id="prenom" required>
+<br><br>
+        <label>Object de message :</label>
+        <input type="text" name="objet" id="objet">
+<br><br>
+        <input type="submit" value="Envoyez" required>
+    </div>
+<br>
 </form>
-<footer>
-<p>Ouvert le lundi au vendredi de 9 heures à 15 heures est de 17 heures à 21 heures 30. Le samedi de 9 heures à 14 heures. Le dimanche férmé.</p>
-<p>Le numéro de téléphone : +262 639 23 57 66</p>
-</footer>
+
+<div class="horaire">
+    <p>Ouvert le lundi au vendredi de 9 heures à 15 heures est de 17 heures à 21 heures 30. Le samedi de 9 heures à 14 heures. Le dimanche férmé.</p>
+    <p>Le numéro de téléphone : +262 639 23 57 66</p>
+</div>
 
 <% message.affiche.forEach(a => { %>
 <h1><%= a %></h1>
 <% }) %>
 
+<%- include('partiel/footer') %>
 </body>
 </html>
