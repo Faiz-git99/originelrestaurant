@@ -1,49 +1,67 @@
-header {
-    background-color:aqua;
-    padding: 20px;
-    text-align: center;
-}
 
-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
+/* partie 1 : css accueil */
 
-/* Style de la liste */
-header ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-h1{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    background-color: aqua;
-    color: black;
-    padding: 20px;
-}
-
-h2{
-    text-align: center;
-}
-
-h3{
-    text-align: center;
+.situation{
+    text-align: center; /* alignement de texte */
+    font-size: 20px; /* taille du texte */
+    color: black; /* couleur du texte */
+    
 }
 
 .image{
-display: flex;
-justify-content: center;
+    display: flex; /* type d'affichage */
+    justify-content: center; /* alignement de la boîte au centre */ 
+    }
+
+/* partie 2 : css contact */
+
+body {
+    font-family: Arial, sans-serif;
+
+    
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.situation{
-    font-weight:bold;
-    font-size: 20px;
-    color: black;
+.persocommande {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    
 }
+
+form {
+    text-align: center;
+    flex-direction: column;
+    
+}
+
+label {
+    margin-bottom: 10px;
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 3px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+
+
+
+
+
+
+
 
 .plat1{
     display: flex;
