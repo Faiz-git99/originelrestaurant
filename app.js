@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const app = express();
 
-const mysql = require('mysql');
+const mysql2 = require('mysql2');
 
 const myConnection = require("express-myconnection");
 
@@ -27,7 +27,10 @@ app.set("view engine", "ejs");
 // précise le répertoire 'public' qui contient le fichier statics
 app.use(express.static("public"));
 
-//app.use(myConnection(connection, "pool"));
+app.use(myConnection(mysql2, connection, "pool"));
+
+// Extraire 
+app.use(express.urlencoded({extended: false} ));
 
 // insérer un route GET
 app.get("/", (req, res) => {
@@ -37,6 +40,8 @@ app.get("/", (req, res) => {
 
 // une route get qui mène au fichier acceuil
 app.get("/accueil", (req, res) => {
+
+
 
     /*fs.readFile("acceuil.html", (err, data) => {
     res.writeHead(200, {"content-type" : "text/html;charset=utf-8"});
@@ -79,15 +84,31 @@ app.get("/menu", (req, res) => {
     res.end();
 }) */
 
-NosMenus = {
-    plat : ["Hamburger double steack", "Wrap", "Tacos","Quesadilla"],
-    prix : ["plat 1 : 12€", "plat 2 : 10€", " plat 3 : 12€", "plat 4 : 15€"],
+    req.getConnection((erreur, connection) => {
+        if(erreur){
+            console.log(erreur);
+        } else {
+            connection.query("SELECT * FROM platrs", [], (err, resultat) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("resultat", resultat);
+                    res.render("menu", {resultat});
+                }
+            });
+        };
+    });
 
-}
 
-res.render("menu", NosMenus);
 
 });
+
+// creé une route avec POST
+app.post("/plat", (req, res) => {
+    
+    res.render("forms");
+});
+
 
 app.get("/contact", (req, res) => {
     
@@ -96,6 +117,8 @@ app.get("/contact", (req, res) => {
     res.write(data);
     res.end();
 }); */
+
+
 
     message = {
         affiche : ["N'oubliez pas de donner votre avis !"],
