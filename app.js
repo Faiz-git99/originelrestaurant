@@ -27,9 +27,10 @@ app.set("view engine", "ejs");
 // précise le répertoire 'public' qui contient le fichier statics
 app.use(express.static("public"));
 
+// recupère la base de données
 app.use(myConnection(mysql2, connection, "pool"));
 
-// Extraire 
+// Extraire des données du formulaires
 app.use(express.urlencoded({extended: false} ));
 
 // insérer un route GET
@@ -92,7 +93,7 @@ app.get("/menu", (req, res) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log("resultat", resultat);
+                    console.log("résultat", resultat);
                     res.render("menu", {resultat});
                 }
             });
@@ -105,8 +106,46 @@ app.get("/menu", (req, res) => {
 
 // creé une route avec POST
 app.post("/plat", (req, res) => {
-    
-    res.render("forms");
+    console.log("Corps requete body : ", req.body);
+    console.log("Corps requete nom : ", req.body.nom);
+    console.log("Corps requete prix : ", req.body.prix);
+
+    let platID;
+    let nomPlat = req.body.nom;
+    let prixPlat = req.body.prix;
+    let requeteSQL;
+
+
+    if(req.body.id === "") {
+        platID = null;
+        requeteSQL = "INSERT INTO platrs(nom, prix) VALUES (?, ?)";
+    } else {
+        platID = req.body.id;
+        requeteSQL = "UPDATE platrs SET nom = ?, prix = ? WHERE id = ?"
+    }
+
+    let donnees;
+    if(platID === null) {
+        donnees = [null, nomPlat, prixPlat]
+    } else{
+       donnees = [nomPlat, prixPlat, platID]
+    }
+
+     req.getConnection((erreur, connection) => {
+        if(erreur){
+            console.log(erreur);
+        } else {
+            connection.query(requeteSQL, donnees, (err, resultat) => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("Insertion réussie !!!!");
+                    res.status(300).redirect("/menu");
+                }
+            });
+        };
+    });
+
 });
 
 
