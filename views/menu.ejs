@@ -9,14 +9,31 @@
 <body>
     <%- include('partiel/navigation') %>
 
-    <h1>Nos menus</h1>
+    <h1>Nos plats</h1>
 
     <ol>
-        <% resultat.forEach (r => { %>
-        <li><%= r.nom %> <%= r.prix %></li>
+         <% resultat.forEach (r => { %>
+        <li> <%= r.nom %> <span> <%= r.prix %> </span> </li> <br><br>
+        <input type="button" value="supprimer" onclick="">
+        <input type="button" value="modifier" onclick="remplirdonnees('<%= r.id %>', '<%= r.nom %>', '<%= r.prix %>')"
         <% }) %>
     </ol>
 
+    <h2>Créer un nouveau plat </h2>
+
+    <form action="/plat" method="post">
+        <input type="hidden" name="id" id="id"> 
+        <label>Nom plat :</label>
+        <input type="text" name="nom" id="nom" required>
+<br><br>
+        <label>Prix (en €) :</label>
+        <input type="number" name="prix"  id="prix" required>
+<br><br>
+        
+        <input type="submit" value="Envoyez" required>
+    
+
+</form>
 
    <!-- <h2>Hamburger double steack </h2>
     <h3>Prix : simple 7€, en menu : 8€ </h3>
@@ -56,4 +73,13 @@
 
 <%- include('partiel/footer') %>
 </body>
+
+<script> 
+    function remplirdonnees(id, nom, prix) {
+        document.querySelector("#id").value = id;
+        document.querySelector("#nom").value = nom;
+        document.querySelector("#prix").value = prix;
+    }
+</script>
+
 </html>
