@@ -11,13 +11,15 @@
 
     <h1>Nos plats</h1>
 
-    <ol>
+    
          <% resultat.forEach (r => { %>
-        <li> <%= r.nom %> <span> <%= r.prix %> </span> </li> <br><br>
-        <input type="button" value="supprimer" onclick="">
+        <h3> <%= r.nom %> <span> <%= r.prix %> </span> </h3> <br><br>
+        
+        <input type="button" value="supprimer" onclick="suppdonnee('<%= r.id %>', '<%= r.nom %>', '<%= r.prix %>')">
         <input type="button" value="modifier" onclick="remplirdonnees('<%= r.id %>', '<%= r.nom %>', '<%= r.prix %>')"
         <% }) %>
-    </ol>
+    
+<br>
 
     <h2>Créer un nouveau plat </h2>
 
@@ -82,4 +84,17 @@
     }
 </script>
 
+<script>
+    function suppdonnee(id) {
+    let routeComplete = "supprimplat/" + id;
+
+    fetch( 
+        routeComplete, {method : "DELETE"}
+    ).then(
+        (reponse) => responce.json()
+    ).then(
+     (donnee) => window.location.href = donnee.routeRacine   
+    )
+    }
+</script>
 </html>
