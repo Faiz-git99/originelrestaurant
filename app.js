@@ -114,7 +114,7 @@ app.post("/plat", (req, res) => {
     let nomPlat = req.body.nom;
     let prixPlat = req.body.prix;
     let requeteSQL;
-
+    
 
     if(req.body.id === "") {
         platID = null;
@@ -123,6 +123,7 @@ app.post("/plat", (req, res) => {
         platID = req.body.id;
         requeteSQL = "UPDATE platrs SET nom = ?, prix = ? WHERE id = ?"
     }
+
 
     let donnees;
     if(platID === null) {
@@ -147,6 +148,28 @@ app.post("/plat", (req, res) => {
     });
 
 });
+
+// créer une route avec DELETE
+// :id cest le paramètre qui s'affiche dans la barre de recherche
+app.delete("/supprimplat/:id", (req, res) => {
+let id = req.params.id;
+
+
+req.getConnection((erreur, connection) => {
+    if (erreur){
+        console.log(erreur);
+    } else {
+        connection.query("DELETE FROM platrs WHERE id = ?", [id], (err, succes) => {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log("suppression reussie");
+                res.status(200).json({routeRacine : "/menu"});
+            }
+        });
+    }
+});
+})
 
 
 app.get("/contact", (req, res) => {
